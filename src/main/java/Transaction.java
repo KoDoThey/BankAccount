@@ -1,15 +1,19 @@
+/*
+
 public class Transaction {
-    double transactionRate = 0.035;
+    private final double transactionRate = 0.035;
 
-    long accountID;
-    String accountName;
-    double availableBalances;
-    double addMoney;
-    double subMoney;
-    double subMoneyFee;
-    double interestRate;
+    private long accountID;
+    private String accountName;
+    private double availableBalances;
+    private double addMoney;
+    private double subMoney;
+    static private double subMoneyFee;
+    static private double interestRate;
 
-    void Account(long l, String s){
+    public Transaction(){}
+
+    public Transaction(long l, String s){
         accountID = l;
         accountName = s;
         double availableBalances = 50;
@@ -34,3 +38,6 @@ public class Transaction {
 
     }
 }
+
+
+ */
