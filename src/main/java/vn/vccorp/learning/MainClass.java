@@ -1,45 +1,34 @@
 import java.util.Scanner;
 
 public class MainClass {
-    //private static int choiceAgain;
-    private static int choiceTranaction;
-    private static long accountID;
 
     public static void main(String[] args) {
+        long accountID;
         Account acctest1 = new Account(1, "Nguyễn Văn Test", 1000);
         System.out.println(acctest1.toString());
 
         Scanner sc = new Scanner(System.in);
         do {
             System.out.print("Nhập STK: ");
-            long accountID = sc.nextLong();
-            if (accountID <= 0){
-                System.out.println("Số tài khoản phải lớn hơn 0");
+            accountID = sc.nextLong();
+            if (accountID <= 0 || accountID == acctest1.getAccountID()){
+                if (accountID <= 0)
+                    System.out.println("Số tài khoản phải lớn hơn 0");
+                else
+                    System.out.println("Số tài khoản đã tồn tại");
                 System.out.println("Bạn có muốn nhập lại không? 1.Có 2.Không");
                 int choiceAgain = sc.nextInt();
                 switch (choiceAgain) {
                     case 1:
-                        break;
+                        System.out.println("Nhap 1 a");
+                        continue;
                     case 2:
                         System.exit(0);
                     default:
                         System.out.println("Lựa chọn không hợp lệ");
                 }
-            } else if (accountID == acctest1.getAccountID()) {
-                System.out.println("Số tài khoản đã tồn tại");
-                System.out.println("Bạn có muốn nhập lại không? 1.Có 2.Không");
-                int choiceAgain = sc.nextInt();
-                switch (choiceAgain) {
-                    case 1:
-                        break;
-                    case 2:
-                        System.exit(0);
-                    default:
-                        System.out.println("Lựa chọn không hợp lệ");
-                }
-            } else
-                System.out.println("accountID > 0 && != acctest1.accountID");
-        } while (accountID == acctest1.getAccountID() || accountID <= 0);
+            }
+        } while ((accountID == acctest1.getAccountID() || accountID <= 0));
             System.out.print("Nhập tên tài khoản: ");
             String accountName = sc.next();
             System.out.print("Nhập số dư: ");
