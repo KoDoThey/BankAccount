@@ -1,3 +1,4 @@
+package vn.vccorp.learning.model;
 
 public class Account {
     private long accountID;

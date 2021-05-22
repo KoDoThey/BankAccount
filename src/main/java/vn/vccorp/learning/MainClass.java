@@ -1,11 +1,39 @@
+package vn.vccorp.learning;
+
+import vn.vccorp.learning.model.Account;
+import vn.vccorp.learning.platform.JdbcQuerryMysql;
+import vn.vccorp.learning.platform.JdbcUpdateMysql;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
+
+import static vn.vccorp.learning.platform.JdbcConnectionMysql.getJdbcConnectionMysql;
 
 public class MainClass {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+        Connection connection = getJdbcConnectionMysql();
+        if (connection != null){
+            System.out.println("Kết nối thành công");
+        } else System.out.println("Kết nối thất bại");
+
+        //Connection viewTable(connection);
+
+        JdbcQuerryMysql jdbcQuerryMysql = new JdbcQuerryMysql();
+        jdbcQuerryMysql.viewTable(connection);
+
+        //JdbcUpdateMysql jdbcUpdateMysql = new JdbcUpdateMysql();
+        //jdbcUpdateMysql.updateTable(connection);
+
+        System.exit(0);
+
+
         long accountID;
         Account acctest1 = new Account(1, "Nguyễn Văn Test", 1000);
-        System.out.println(acctest1.toString());
+        //System.out.println(acctest1.toString());
 
         Scanner sc = new Scanner(System.in);
         do {
